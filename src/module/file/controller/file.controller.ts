@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Res,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
@@ -14,6 +15,8 @@ import { SuccessResponse } from 'src/common/response/success.response';
 import { FileService } from '../service/file.service';
 import { FileDto } from '../dto/file.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Response } from 'express';
+import { Readable } from 'stream';
 
 @Controller('file')
 @ApiTags(TagEnum.FILE)
@@ -33,10 +36,16 @@ export class FileController {
 
   @Get(':id')
   async url(
-    @Param('id') id: string
+    @Param('id') id: string,
+    @Res() res: Response,
   ) {
-    const data = await this.fileService.url(id)
-    return SuccessResponse.response(data);
+    const stream  = await this.fileService.url(id)
+
+    res.setHeader('Content-Type', 'application/octet-stream');
+    res.setHeader('Content-Disposition', `attachment; filename="${id}"`);
+
+    // Pipe the stream to the response
+    stream.pipe(res);
   }
 
   @Get()

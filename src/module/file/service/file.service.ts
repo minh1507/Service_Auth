@@ -31,7 +31,7 @@ export class FileService {
   }
 
   async url(id: string) {
-    return await this.minioService.findUrlFile(id, 'file')
+    return await this.minioService.findOneFile(id, 'file')
   }
 
   async findAll(){
