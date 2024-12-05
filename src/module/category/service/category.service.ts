@@ -4,7 +4,6 @@ import { Repository } from 'typeorm';
 import { Category } from '../schemas/category.entity';
 import { CreateCategoryDto, ListCategoryDto, UpdateCategoryDto } from '../dto/category.dto';
 import { CustomBadRequestException } from 'src/common/exeption/bad-request.exeption';
-import { retry } from 'rxjs';
 
 @Injectable()
 export class CategoryService {

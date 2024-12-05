@@ -21,7 +21,8 @@ export class BuyService {
       product: {
         id: Number(request.productId)
       },
-      isPurchase: false
+      isPurchase: false,
+      type: "Trả sau"
     } 
 
     this.buyRepository.save(buyer)
