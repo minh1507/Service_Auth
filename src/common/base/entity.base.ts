@@ -14,7 +14,7 @@ export abstract class BaseEntity extends RootEntity {
   })
   @Column('varchar', {
     length: 25,
-    nullable: false,
+    nullable: true,
   })
   code: string;
 
