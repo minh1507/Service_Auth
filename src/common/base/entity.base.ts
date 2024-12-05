@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, MaxLength } from 'class-validator';
+import { IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
 import { Column } from 'typeorm';
 import { RootEntity } from './rootEntity.base';
 
@@ -9,11 +9,8 @@ export abstract class BaseEntity extends RootEntity {
     example: 'Mã 1',
     maxLength: 25,
   })
-  @IsNotEmpty({
+  @IsOptional({
     message: "Mã không được để trống"
-  })
-  @MaxLength(25, {
-    message: "Mã không được vượt quá 25 ký tự"
   })
   @Column('varchar', {
     length: 25,
