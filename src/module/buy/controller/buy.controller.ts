@@ -1,6 +1,7 @@
 import {
     Body,
     Controller,
+    Get,
     Post,
   } from '@nestjs/common';
   import { ApiTags } from '@nestjs/swagger';
@@ -20,6 +21,12 @@ import { CreateBuyDto } from '../dto/buy.dto';
     create(@Body() request: CreateBuyDto) {
       this.categoryService.create(request);
       return SuccessResponse.base()
+    }
+
+    @Get()
+    async findAll() {
+      const data = await this.categoryService.findAll();
+      return SuccessResponse.response(data)
     }
   }
   

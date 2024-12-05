@@ -26,4 +26,17 @@ export class BuyService {
 
     this.buyRepository.save(buyer)
   }
+
+  async findAll(){
+    const data = await this.buyRepository.find({
+      relations: {
+        product: true
+      },
+      order: {
+        createdAt: "DESC"
+      }
+    })
+
+    return data
+  }
 }
