@@ -18,8 +18,8 @@ export class BuyService {
       address: request.address,
       phone: request.phone,
       quantity: request.quantity,
-      productId: {
-        id: request.productId
+      product: {
+        id: Number(request.productId)
       }
     } 
 
