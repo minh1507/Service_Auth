@@ -33,6 +33,12 @@ export class Buy extends BaseEntity {
     })
     quantity: string;
 
+    @IsOptional()
+    @Column('boolean', {
+        nullable: true,
+    })
+    isPurchase?: boolean;
+
     @ManyToOne(() => Product, (item) => item.buy)
     @JoinColumn()
     product: Product;

@@ -20,7 +20,8 @@ export class BuyService {
       quantity: request.quantity,
       product: {
         id: Number(request.productId)
-      }
+      },
+      isPurchase: false
     } 
 
     this.buyRepository.save(buyer)
