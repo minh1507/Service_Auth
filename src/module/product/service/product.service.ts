@@ -21,22 +21,33 @@ export class ProductService {
   ) {}
 
   async list(request: ListProductDto) {
-    let condition = {}
-
-    if(request.categoryId)  condition['category'] = {
-      id: request.categoryId
+    if(request.categoryId != 24){
+      let condition = {}
+      if(request.categoryId)  condition['category'] = {
+        id: request.categoryId
+      }
+  
+      return await this.productRepository.find({
+        where: condition,
+        relations: {
+          category: true,
+          file: true
+        },
+        order: {
+          id: 'DESC',
+        },
+      });
+    }else{
+      return await this.productRepository.find({
+        relations: {
+          category: true,
+          file: true
+        },
+        order: {
+          id: 'DESC',
+        },
+      });
     }
-
-    return await this.productRepository.find({
-      where: condition,
-      relations: {
-        category: true,
-        file: true
-      },
-      order: {
-        id: 'DESC',
-      },
-    });
   }
 
   async detail(id: number) {
