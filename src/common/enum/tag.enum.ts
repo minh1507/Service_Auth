@@ -3,5 +3,6 @@ export enum TagEnum{
     CATEGORY="Category",
     FILE="File",
     PRODUCT="Product",
-    ANONYMOUS="Anonymous"
+    ANONYMOUS="Anonymous",
+    BUY='Buy'
 }

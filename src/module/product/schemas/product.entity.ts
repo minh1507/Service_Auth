@@ -4,6 +4,7 @@ import { IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { File } from 'src/module/file/schemas/file.entity';
 import { Category } from 'src/module/category/schemas/category.entity';
+import { Buy } from 'src/module/buy/schemas/buy.entity';
 
 @Entity()
 export class Product extends RootEntity {
@@ -71,4 +72,7 @@ export class Product extends RootEntity {
   @ManyToOne(() => Category, (item) => item.product)
   @JoinColumn()
   category: Category;
+
+  @OneToMany(() => Buy, (item) => item.product)
+  buy: Buy[];
 }
