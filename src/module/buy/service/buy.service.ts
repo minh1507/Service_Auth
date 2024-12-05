@@ -40,4 +40,20 @@ export class BuyService {
 
     return data
   }
+
+  async update(id: string){
+    const data = await this.buyRepository.findOne({
+      where: {
+        id: Number(id)
+      }
+    })
+
+    if(data && data.isPurchase){
+      data.isPurchase = !data.isPurchase
+    }
+
+    if(data){
+      await this.buyRepository.save(data);
+    }
+  }
 }

@@ -2,6 +2,8 @@ import {
     Body,
     Controller,
     Get,
+    Param,
+    Patch,
     Post,
   } from '@nestjs/common';
   import { ApiTags } from '@nestjs/swagger';
@@ -27,6 +29,12 @@ import { CreateBuyDto } from '../dto/buy.dto';
     async findAll() {
       const data = await this.categoryService.findAll();
       return SuccessResponse.response(data)
+    }
+
+    @Patch(':id')
+    update(@Param('id') id: string) {
+      this.categoryService.update(id);
+      return SuccessResponse.base()
     }
   }
   
