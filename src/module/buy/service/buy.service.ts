@@ -48,7 +48,7 @@ export class BuyService {
       }
     })
 
-    if(data && data.isPurchase){
+    if(data && data.isPurchase != null){
       data.isPurchase = !data.isPurchase
     }
 
