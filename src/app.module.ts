@@ -10,6 +10,7 @@ import { MinioModule } from './module/minio/minio.module';
 import { FileModule } from './module/file/file.module';
 import { ProductModule } from './module/product/product.module';
 import { AnonymousModule } from './module/anonymous/anonymous.module';
+import { BuyModule } from './module/buy/buy.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { AnonymousModule } from './module/anonymous/anonymous.module';
     MinioModule,
     FileModule,
     ProductModule,
-    AnonymousModule
+    AnonymousModule,
+    BuyModule
   ],
   controllers: [],
   providers: [
